@@ -1,0 +1,45 @@
+name: Base Cookie Recipe
+extends: null
+yield: 48
+temp: 350
+time: 12
+
+recipe:
+  cream:
+    instructions: Cream {butter} with {brown_sugar} and {white_sugar} until fluffy (3-4 minutes)
+    ingredients:
+      - butter: 0.75
+      - brown_sugar: 0.75
+      - white_sugar: 0.75
+
+  wet:
+    instructions: Beat in {eggs} one at a time, then add {vanilla}
+    ingredients:
+      - eggs: 2
+      - vanilla: 2
+
+  dry:
+    instructions: In a separate bowl, whisk together {flour}, {baking_soda}, and {salt}. Gradually fold into wet mixture until just combined.
+    ingredients:
+      - flour: 2.25
+      - baking_soda: 1 tsp
+      - salt: 0.25 tsp
+
+  mix_ins:
+    instructions: Fold in any mix-ins if using
+    ingredients: []
+
+  rest:
+    instructions: Chill dough in fridge for 15-30 minutes
+
+  prep_oven:
+    instructions: Preheat oven to {temp}°F. Line baking sheets with parchment paper.
+
+  form:
+    instructions: Form tablespoon-sized dough balls and place 2 inches apart on sheet (12 per sheet)
+
+  bake:
+    instructions: Bake until cookies lose their shiny appearance, about {time} minutes
+
+  cool:
+    instructions: Let cookies cool on sheet for 10 minutes before removing to wire rack

@@ -1,0 +1,35 @@
+extends: base
+
+info:
+  name: Pumpkin Spice
+  desc: Warm pumpkin spice cookies.
+
+ingredients:
+  add:
+    - id: pumpkin
+      category: binder
+      prep: Mix with Pumpkin Spice and cook down in a pot or pan for 10-15 minutes to remove excess moisture.
+      items:
+        - name: Pumpkin Puree
+          amount: 1
+          unit: cup
+
+    - id: pumpkin_spice
+      category: spice
+      items:
+        - name: Pumpkin Spice
+          amount: 2
+          unit: tsp
+
+  change:
+    - id: butter
+      prep:
+
+steps:
+  remove:
+    - cool
+
+  change:
+    - step: mix_ins
+      categories: [mix_ins, spice]
+      instructions: Mix in {ingredients}.

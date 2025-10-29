@@ -1,0 +1,9 @@
+name: Chocolate Chip Cookies
+extends: base
+yield: 48
+
+recipe:
+  mix_ins:
+    instructions: Fold in {chocolate_chips} until evenly distributed
+    ingredients:
+      - chocolate_chips: 2
