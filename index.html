@@ -1,68 +1,24 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Cookie Recipes</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Measure Cookies</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div id="recipe-selector">
-        <select id="recipe-select">
-            <option value="">Choose a recipe...</option>
-            <option value="base">Base Cookie Recipe</option>
-            <option value="chocolate_chip">Chocolate Chip Cookies</option>
-        </select>
+    <div id="cookieBox">
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
     </div>
 
-    <div id="recipe-display"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-    <script src="parser.js"></script>
-    <script>
-        let parser;
-
-        async function init() {
-            parser = new RecipeParser();
-            await parser.initialize();
-
-            // Set up event listener
-            document.getElementById('recipe-select').addEventListener('change', async (e) => {
-                if (e.target.value) {
-                    await displayRecipe(e.target.value);
-                }
-            });
-        }
-
-        async function displayRecipe(recipeName) {
-            const recipe = await parser.generateRecipe(recipeName);
-
-            let html = `
-                <h2>${recipe.name}</h2>
-                <p>Yield: ${recipe.yield} cookies | Bake: ${recipe.bakeTemp}°F for ${recipe.bakeTime} minutes</p>
-                
-                <h3>Ingredients</h3>
-                <ul>
-                    ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
-                </ul>
-                
-                <h3>Instructions</h3>
-                <ol>
-                    ${recipe.steps.map(step => `
-                        <li>
-                            <strong>${step.name.charAt(0).toUpperCase() + step.name.slice(1)}:</strong>
-                            ${step.instructions}
-                        </li>
-                    `).join('')}
-                </ol>
-            `;
-
-            document.getElementById('recipe-display').innerHTML = html;
-        }
-
-        // Initialize when page loads
-        init();
-    </script>
+    <script src="cookies.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,31 @@
+body{
+    overflow: hidden;
+}
+
+#cookieBox{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    background-color: grey;
+}
+
+.cookie{
+    width: 150px;
+    height: 150px;
+    border-radius: 1000px;
+    background-color: bisque;
+    margin-right: -25px;
+    margin-bottom: -40px;
+    transition: transform 0.1s ease-out;
+}
+
+.cookie:hover{
+    transform: translateY(-25px) scale(1.25);
+    transition: all 0.1s ease-out;
+}
+
+.cookie::after {
+    transform: translateY(25px);
+}

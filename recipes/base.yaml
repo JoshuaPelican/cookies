@@ -21,7 +21,7 @@ recipe:
   dry:
     instructions: In a separate bowl, whisk together {flour}, {baking_soda}, and {salt}. Gradually fold into wet mixture until just combined.
     ingredients:
-      - flour: 2.25
+      - flour: 2.25 cup
       - baking_soda: 1 tsp
       - salt: 0.25 tsp
 
@@ -42,4 +42,4 @@ recipe:
     instructions: Bake until cookies lose their shiny appearance, about {time} minutes
 
   cool:
-    instructions: Let cookies cool on sheet for 10 minutes before removing to wire rack
+    instructions: Let cookies cool on sheet for 10 minutes before storing/eating
