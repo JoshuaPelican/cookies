@@ -1,0 +1,19 @@
+name: Pumpkin Pie
+extends: base
+bake_time: 13-14
+
+ingredients:
+  add:
+    eggs_(yolk only): 2 yolks
+    pumpkin_pie_spice: 2 tsp
+    pumpkin_puree: 1/2 cup
+    dark_chocolate_chips: 1 cup
+  remove:
+    eggs: _
+
+steps:
+  add:
+    1: Brown butter; Mix pumpkin pie spice and pumpkin puree; reduce on stove until firm (about 10-15 minutes)
+  replace:
+    2: Only use egg yolks! Add eggs, reduced pumpkin puree, and vanilla; beat until well blended
+    3: Add flour, baking soda and salt; beat until no flour streaks, no more

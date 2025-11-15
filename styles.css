@@ -1,31 +1,63 @@
-body{
+body {
     overflow: hidden;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #5a4a3a;
 }
 
-#cookieBox{
-    position: relative;
+#cookieBox {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-    background-color: grey;
+    align-content: center;
+    background-color: #8B7355;
+    height: 100vh;
+    width: 100%;
+    padding: 40px;
 }
 
-.cookie{
-    width: 150px;
-    height: 150px;
-    border-radius: 1000px;
-    background-color: bisque;
-    margin-right: -25px;
-    margin-bottom: -40px;
-    transition: transform 0.1s ease-out;
+.cookie {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transition: transform 0.2s ease-out, z-index 0s;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin:  -20px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .cookie:hover{
-    transform: translateY(-25px) scale(1.25);
-    transition: all 0.1s ease-out;
+    transform: translateY(-30px) rotate(30deg);
 }
 
-.cookie::after {
-    transform: translateY(25px);
+.cookie.zooming{
+    pointer-events: none;
+    z-index: 1000;
+}
+
+#recipeDisplay{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 1001;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+#recipeDisplay.hidden{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s, visibility 0.1s;
+}
+
+/* Tablet and Desktop */
+@media (max-width: 768px) {
+    body{
+        overflow: auto;
+    }
 }

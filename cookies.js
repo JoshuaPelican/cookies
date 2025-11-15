@@ -1,37 +1,69 @@
 const cookieContainer = document.getElementById("cookieBox");
+const recipeDisplay = document.getElementById("recipeDisplay");
 
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+function displayRecipe(recipeID) {
+    recipeDisplay.innerHTML = buildRecipe(recipeID);
+    document.getElementById('closeBtn').addEventListener('click', closeRecipe);
 }
-for (let i = 0; i < cookieContainer.children.length; i++) {
-    const cookie = cookieContainer.children[i];
-    cookie.style.backgroundColor = getRandomColor();
-    cookie.addEventListener("click", function (e){
-        // Get cookie's current position
-        const rect = this.getBoundingClientRect();
-        const cookieCenterX = rect.left + rect.width / 2;
-        const cookieCenterY = rect.top + rect.height / 2;
+
+let activeCookie = null;
+
+function closeRecipe() {
+    recipeDisplay.classList.add('hidden');
+    if (activeCookie) {
+        activeCookie.style.transform = '';
+        activeCookie.style.zIndex = '';
+        activeCookie.style.transition = '';
+        activeCookie.classList.remove("zooming");
+        activeCookie = null;
+    }
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeRecipe();
+    }
+});
+
+function init() {
+    const recipeKeys = recipeList.slice(0);
+    
+    // Create cookie elements for each recipe
+    for (let i = 1; i < recipeKeys.length; i++) {
+        const cookie = document.createElement('img');
+        cookie.src = `svg/${recipeKeys[i]}.svg`
+        cookie.className = 'cookie';
+        cookie.dataset.cookieID = recipeKeys[i];
+        cookieContainer.appendChild(cookie);
         
-        // Calculate distance to viewport center
-        const viewportCenterX = window.innerWidth / 2;
-        const viewportCenterY = window.innerHeight / 2;
-        
-        const translateX = viewportCenterX - cookieCenterX;
-        const translateY = viewportCenterY - cookieCenterY;
-        
-        // Apply transform with translation and scale
-        this.style.transform = `translate(${translateX}px, ${translateY}px) scale(10)`;
-        this.style.transition = "transform 1s ease-out"
-        
-        setTimeout(() => {
-            this.style.transform = '';
-            this.style.zIndex = '';
-            this.style.transition = '';
-        }, 2000);
-    })
+        cookie.addEventListener("click", function (e) {
+            if (activeCookie) return;
+            
+            const rect = this.getBoundingClientRect();
+            const cookieCenterX = rect.left + rect.width / 2;
+            const cookieCenterY = rect.top + rect.height / 2;
+            
+            const viewportCenterX = window.innerWidth / 2;
+            const viewportCenterY = window.innerHeight / 2;
+            
+            const translateX = viewportCenterX - cookieCenterX;
+            const translateY = viewportCenterY - cookieCenterY;
+            
+            // Calculate diagonal of viewport
+            const diagonal = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
+            const scale = diagonal / (rect.width * 0.6);
+            
+            this.style.transition = "transform 0.8s ease-out";
+            this.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            
+            this.classList.add("zooming");
+
+            activeCookie = this;
+            
+            setTimeout(() => {
+                displayRecipe(this.dataset.cookieID);
+                recipeDisplay.classList.remove('hidden');
+            }, 500);
+        });
+    }
 }
