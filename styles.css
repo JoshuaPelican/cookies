@@ -1,8 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     overflow: hidden;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #5a4a3a;
+    background-color: #8B7355;
 }
 
 #cookieBox {
@@ -11,45 +20,57 @@ body {
     justify-content: center;
     align-content: center;
     background-color: #8B7355;
-    height: 100vh;
-    width: 100%;
     padding: 40px;
+    padding-top: calc(50vh - 180px);
 }
 
 .cookie {
+    position: relative;
+
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    transition: transform 0.2s ease-out, z-index 0s;
+    margin: -40px;
+
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    margin:  -20px;
-    position: relative;
+    
     background-color: rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-out, z-index 0s;
 }
 
 .cookie:hover{
-    transform: translateY(-30px) rotate(30deg);
+    transform: translateY(-35px) rotate(30deg);
 }
 
 .cookie.zooming{
     pointer-events: none;
+    cursor: default;
+    
     z-index: 1000;
 }
 
 #recipeDisplay{
     position: fixed;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
     z-index: 1001;
+
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
 
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s, visibility 0.3s;
 }
 
-#recipeDisplay.hidden{
+#cookieNameTip{
+    position: absolute;
+}
+
+#recipeDisplay.hidden, #cookieNameTip.hidden{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.1s, visibility 0.1s;

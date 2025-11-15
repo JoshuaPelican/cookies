@@ -1,5 +1,6 @@
 const cookieContainer = document.getElementById("cookieBox");
 const recipeDisplay = document.getElementById("recipeDisplay");
+const cookieNameTip = document.getElementById("cookieNameTip");
 
 function displayRecipe(recipeID) {
     recipeDisplay.innerHTML = buildRecipe(recipeID);
@@ -40,8 +41,8 @@ function init() {
             if (activeCookie) return;
             
             const rect = this.getBoundingClientRect();
-            const cookieCenterX = rect.left + rect.width / 2;
-            const cookieCenterY = rect.top + rect.height / 2;
+            const cookieCenterX = (rect.left + rect.width) / 2;
+            const cookieCenterY = (rect.top + rect.height) / 2;
             
             const viewportCenterX = window.innerWidth / 2;
             const viewportCenterY = window.innerHeight / 2;
@@ -64,6 +65,22 @@ function init() {
                 displayRecipe(this.dataset.cookieID);
                 recipeDisplay.classList.remove('hidden');
             }, 500);
+        });
+
+        cookie.addEventListener("mouseenter", function (e) {
+            cookieNameTip.classList.remove("hidden");
+            const rect = this.getBoundingClientRect();
+            const cookieCenterX = rect.left + (rect.width / 2);
+            const cookieCenterY = rect.top + (rect.height / 2);
+
+            cookieNameTip.innerText = this.dataset.cookieID;
+
+            cookieNameTip.style.left = (cookieCenterX - (cookieNameTip.getBoundingClientRect().width / 2)) + 'px';
+            cookieNameTip.style.top = (cookieCenterY - 180) + 'px';
+        });
+
+        cookie.addEventListener("mouseleave", function (e) {
+            cookieNameTip.classList.add("hidden");
         });
     }
 }
