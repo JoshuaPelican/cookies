@@ -41,8 +41,8 @@ function init() {
             if (activeCookie) return;
             
             const rect = this.getBoundingClientRect();
-            const cookieCenterX = (rect.left + rect.width) / 2;
-            const cookieCenterY = (rect.top + rect.height) / 2;
+            const cookieCenterX = rect.left + (rect.width / 2);
+            const cookieCenterY = rect.top + (rect.height / 2);
             
             const viewportCenterX = window.innerWidth / 2;
             const viewportCenterY = window.innerHeight / 2;
