@@ -14,13 +14,18 @@ body {
     background-color: #8B7355;
 }
 
+h1{
+    text-align: center;
+}
+
 #cookieBox {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+
     background-color: #8B7355;
-    padding: 40px;
+    padding: 60px;
     padding-top: calc(50vh - 180px);
 }
 
@@ -61,6 +66,8 @@ body {
     border-radius: 20px;
     padding: 10px;
 
+    max-width: 300px;
+
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s, visibility 0.3s;
@@ -78,7 +85,7 @@ body {
 
 /* Tablet and Desktop */
 @media (max-width: 768px) {
-    body{
-        overflow: auto;
+    #cookieBox {
+        padding-top: 80px;
     }
 }

@@ -126,7 +126,6 @@ Promise.all(
 ).then(() =>{
     recipeList.map(recipeID =>{
         recipes[recipeID] = resolveRecipe(recipes, recipeID)
-        console.log(recipes[recipeID]);
     })
     init();
 });

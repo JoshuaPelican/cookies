@@ -41,8 +41,8 @@ function init() {
             if (activeCookie) return;
             
             const rect = this.getBoundingClientRect();
-            const cookieCenterX = rect.left + (rect.width / 2);
-            const cookieCenterY = rect.top + (rect.height / 2);
+            const cookieCenterX = rect.left + (100) + 35;
+            const cookieCenterY = rect.top + (100) + 70;
             
             const viewportCenterX = window.innerWidth / 2;
             const viewportCenterY = window.innerHeight / 2;
@@ -51,8 +51,8 @@ function init() {
             const translateY = viewportCenterY - cookieCenterY;
             
             // Calculate diagonal of viewport
-            const diagonal = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
-            const scale = diagonal / (rect.width * 0.6);
+            const diagonal = Math.sqrt((window.innerWidth ** 2) + (window.innerHeight ** 2));
+            const scale = diagonal / 180;
             
             this.style.transition = "transform 0.8s ease-out";
             this.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
