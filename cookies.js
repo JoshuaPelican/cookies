@@ -12,11 +12,22 @@ let activeCookie = null;
 function closeRecipe() {
     recipeDisplay.classList.add('hidden');
     if (activeCookie) {
+        // Animate back to original position
         activeCookie.style.transform = '';
-        activeCookie.style.zIndex = '';
         activeCookie.style.transition = '';
-        activeCookie.classList.remove("zooming");
+
+        const cookie = activeCookie;
         activeCookie = null;
+        
+        // Wait for animation to complete before resetting position
+        setTimeout(() => {
+            cookie.style.position = '';
+            cookie.style.left = '';
+            cookie.style.top = '';
+            cookie.style.margin = '';
+            cookie.style.zIndex = '';
+            cookie.classList.remove("zooming");
+        }, 150);
     }
 }
 
@@ -40,25 +51,34 @@ function init() {
         cookie.addEventListener("click", function (e) {
             if (activeCookie) return;
             
-            const rect = this.getBoundingClientRect();
-            const cookieCenterX = rect.left + (100) + 35;
-            const cookieCenterY = rect.top + (100) + 70;
+            var rect = this.getBoundingClientRect();
+            
+            // Switch to fixed positioning at current visual location
+            this.style.position = 'fixed';
+            this.style.left = rect.left + 35 + 'px'; // magic ugly number
+            this.style.top = rect.top + 70 + 'px'; // another magic number
+            this.style.margin = '0';
+            
+            // Force reflow to apply position change before animating
+            void this.offsetHeight;
             
             const viewportCenterX = window.innerWidth / 2;
             const viewportCenterY = window.innerHeight / 2;
             
-            const translateX = viewportCenterX - cookieCenterX;
-            const translateY = viewportCenterY - cookieCenterY;
+            rect = this.getBoundingClientRect();
+
+            // Calculate translation to center
+            const translateX = viewportCenterX - (rect.left + 100);
+            const translateY = viewportCenterY - (rect.top + 100);
             
-            // Calculate diagonal of viewport
+            // Calculate scale to fill viewport
             const diagonal = Math.sqrt((window.innerWidth ** 2) + (window.innerHeight ** 2));
-            const scale = diagonal / 180;
+            const scale = diagonal / 180; // 180 is slightly smaller than cookie width
             
             this.style.transition = "transform 0.8s ease-out";
-            this.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            this.style.transform = `translate(${translateX-35}px, ${translateY-70}px) scale(${scale})`;
             
             this.classList.add("zooming");
-
             activeCookie = this;
             
             setTimeout(() => {
@@ -76,7 +96,7 @@ function init() {
             cookieNameTip.innerText = this.dataset.cookieID;
 
             cookieNameTip.style.left = (cookieCenterX - (cookieNameTip.getBoundingClientRect().width / 2)) + 'px';
-            cookieNameTip.style.top = (cookieCenterY - 180) + 'px';
+            cookieNameTip.style.top = (cookieCenterY - 180) + 'px'; // same 180
         });
 
         cookie.addEventListener("mouseleave", function (e) {
