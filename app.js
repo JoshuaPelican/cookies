@@ -77,6 +77,7 @@ class App{
                 this.activeCookie.style.transform = `translate(${translateX-35}px, ${translateY-70}px) scale(${scale})`;
                 
                 this.activeCookie.classList.add("zooming");
+                this.cookieNameTip.classList.add("hidden");
                 
                 setTimeout(() => {
                     this.history.navigate(`/recipe?id=${this.activeCookie.dataset.cookieID}`);
@@ -94,7 +95,7 @@ class App{
                     this.cookieNameTip.innerText = this.recipeBuilder.recipes[e.target.dataset.cookieID].name;
 
                     this.cookieNameTip.style.left = (cookieCenterX - (this.cookieNameTip.getBoundingClientRect().width / 2)) + 'px';
-                    this.cookieNameTip.style.top = (cookieCenterY - 180) + 'px'; // same 180
+                    this.cookieNameTip.style.top = (this.cookieContainer.getBoundingClientRect().top + 200) + 'px'; // same 180
                 });
 
                 cookie.addEventListener("mouseleave", (e) => {

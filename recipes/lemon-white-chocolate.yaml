@@ -1,0 +1,16 @@
+name: Lemon White Chocolate
+extends: base
+
+ingredients:
+  add:
+    lemon_zest: 2-3 tablespoon (about 3-4 medium lemon worth of zest)
+    lemon_juice: 1 tablespoon (about 1/2 medium lemon worth of juice)
+    white_chocolate_chips: 1 cup
+  replace:
+    vanilla_extract: 1/2 teaspoon
+
+steps:
+  replace:
+    1: In a large mixing bowl, beat butter, sugars, and lemon zest until smooth and fluffy
+    2: Add eggs, vanilla, and lemon juice; beat until well blended
+    3: Add flour, chocolate chips, baking soda, and salt; mix until no flour streaks; do not overmix
