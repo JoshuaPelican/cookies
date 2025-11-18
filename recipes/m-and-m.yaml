@@ -3,9 +3,9 @@ extends: base
 
 ingredients:
   add:
-    chocoalte_chips: 1 cup
+    chocolate_chips: 1 cup
     M&Ms: 1 cup
 
 steps:
   replace:
-    3: Add flour, chocoalte chips, M&Ms, baking soda, and salt; mix until no flour streaks; do not overmix
+    3: Add flour, chocolate chips, M&Ms, baking soda, and salt; mix until no flour streaks; do not overmix
