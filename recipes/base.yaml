@@ -1,6 +1,8 @@
 name: base
 bake_time: 12-13
 bake_temp: 350
+yield: 40
+
 ingredients:
   flour: "2 1/4 cup"
   granulated_sugar: "3/4 cup"

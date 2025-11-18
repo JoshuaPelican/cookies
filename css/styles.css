@@ -37,7 +37,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 
     padding: 60px;
     padding-top: calc(50vh - 200px);

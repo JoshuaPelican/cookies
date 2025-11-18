@@ -1,9 +1,10 @@
 this.recipeList = [
     "base",
     "chocolate-chip",
+    "m-and-m",
+    "cookies-and-cream",
+    "snowball",
     "gingerbread",
     "pumpkin-pie",
     "pecan-pie",
-    "m-and-m",
-    "cookies-and-cream"
 ]

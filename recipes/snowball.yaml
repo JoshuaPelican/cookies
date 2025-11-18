@@ -1,0 +1,19 @@
+name: Snowball
+extends: base
+
+ingredients:
+  add:
+    powdered_sugar: 1/2 cup
+    mini_chocolate_chips: 3/4 cup
+  remove:
+    granulated_sugar: _
+    brown_sugar: _
+    baking_soda: _
+  replace:
+    butter_(unsalted): 1 cup
+
+steps:
+  replace:
+    1: In a large mixing bowl, beat butter and sugar until light and fluffy
+    2: Add vanilla; beat until well blended
+    3: Add flour, chocolate chips, and salt; mix until no flour streaks; do not overmix
