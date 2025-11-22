@@ -1,17 +1,18 @@
 name: Gingerbread
 extends: base
-bake_time: 15-16
 
 ingredients:
   add:
-    molasses: 1/4 cup
+    molasses: 1/2 cup
     ginger: 1 tablespoon
     cinnamon: 1/2 tablespoon
     allspice: 1/2 teaspoon
     cloves: 1/2 teaspoon
   replace:
-    brown_sugar: 1 cup
-    granulated_sugar: 1/4 cup
+    brown_sugar: 3/4 cup
+    flour: 2 1/2 cup
+  remove:
+    granulated_sugar: _
 
 steps:
   replace:
